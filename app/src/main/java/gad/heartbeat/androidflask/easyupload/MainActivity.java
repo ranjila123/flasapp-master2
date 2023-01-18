@@ -130,11 +130,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
         for (int i = 0; i < selectedImagesPaths.size(); i++) {
             Log.d("size","size"+selectedImagesPaths.size());
             BitmapFactory.Options options = new BitmapFactory.Options();
@@ -222,14 +217,8 @@ public class MainActivity extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_MULTIPLE_IMAGES);
     }
-    public String getRealPathFromURI(Uri contentUri)
-    {
-        String[] proj = { MediaStore.Audio.Media.DATA };
-        Cursor cursor = managedQuery(contentUri, proj, null, null, null);
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA);
-        cursor.moveToFirst();
-        return cursor.getString(column_index);
-    }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         try {
@@ -249,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
                     imagesSelected = true;
                     numSelectedImages.setText("Number of Selected Images : " + selectedImagesPaths.size());
                 } else {
-                    // When multiple images are selected.
+                    // When multiple images are selected.ipcon
                     // Thanks tp Laith Mihyar for this Stackoverflow answer : https://stackoverflow.com/a/34047251/5426539
                     if (data.getClipData() != null) {
                         ClipData clipData = data.getClipData();
